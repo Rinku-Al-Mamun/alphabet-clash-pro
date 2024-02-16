@@ -22,7 +22,19 @@
 //     return alphabet;
 // }
 
+function continueGame(){
+    //step 1;
+    const alphabet = getARandomAlphabet();
+    console.log('your random alphabet', alphabet);
+
+    // set random Alphabet 
+    const currentAlphabetElement = document.getElementById('current-alphabet');
+    currentAlphabetElement.innerText = alphabet; 
+
+}
+
 function play(){
     hideElementById('home-screen');
     showElementById('play-ground');
+    continueGame()
 }
