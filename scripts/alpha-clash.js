@@ -24,12 +24,49 @@ function handlekeyboardkeyUpEvent(event){
     //check right or wrong key pressed
     if(playerPressed === expectedAlphabet){
         console.log('you got a point!');
-        console.log('you have pressed correctly', expectedAlphabet);
+
+        const currentScore = getTextElementValueById('current-score');
+        const updatedScore = currentScore +1;
+        setTextElementValueById('current-score', updatedScore);
+
+        //----------------------------
+        //update score:
+        //1. get the current score
+        // const currentScoreElement = document.getElementById('current-score');
+        // const currentScoreText = currentScoreElement.innerText;
+        // const currentScore = parseInt(currentScoreText);
+        // console.log(currentScore);
+        //2 increase the score 
+        const newScore = currentScore + 1;
+
+        //3. show the updated score
+
+        //currentScoreElement.innerText = newScore;
         removeBacgroundColorById(expectedAlphabet);
         continueGame();
     }
     else {
-        console.log('dhur vaia ba apu ...right key press koro')
+        console.log('dhur vaia ba apu ...right key press koro');
+
+        const currentLife = getTextElementValueById('current-life');
+        const updatedLife = currentLife - 1;
+        setTextElementValueById('current-life', updatedLife);
+
+        if(updatedLife === 0){
+            gameOver();
+        }
+
+
+        // 1 step: get the current life niumber
+        // const currentLifeElement = document.getElementById('current-life');
+        // const currentLifeText = currentLifeElement.innerText;
+        // const currentLife = parseInt(currentLifeText);
+
+        // step 2 : reduce the life count
+        //const newLife = currentLife - 1;
+
+        // step 3: display the update life count
+        //currentLifeElement.innerText = newLife;
     }
 }
 // capture keyboard key press
@@ -51,6 +88,19 @@ function continueGame(){
 
 function play(){
     hideElementById('home-screen');
+    hideElementById('final-score');
     showElementById('play-ground');
-    continueGame()
+
+    //reset everything show
+    setTextElementValueById('current-Life', 5);
+    setTextElementValueById('current-score', 0);
+
+
+    continueGame();
+}
+
+function gameOver(){
+    hideElementById('play-ground');
+    showElementById('final-score');
+
 }
