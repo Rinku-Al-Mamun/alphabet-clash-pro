@@ -10,26 +10,42 @@
 //     playgroundSection.classList.remove('hidden');
 // }
 
-// function  getARandomAlphabet(){
-//     const alpabetString = 'abcdefghijklmnopqrstuvwxyz';
-//     const alphabets = alpabetString.split('');
-//     //console.log(alphabets);
 
-//     const randomNumber = Math.random() * 25;
-//     const index = Math.round(randomNumber);
 
-//     const alphabet = alphabets[index];
-//     return alphabet;
-// }
+function handlekeyboardkeyUpEvent(event){
+    const playerPressed = event.key;
+    console.log('player pressed', playerPressed);
+    //get the expected to press
+    const currentAlphabetElement = document.getElementById('current-alphabet');
+    const currentAlphabet = currentAlphabetElement.innerText;
+    const expectedAlphabet = currentAlphabet.toLowerCase();
+    //console.log(playerPressed, expectedAlphabet);
+
+    //check right or wrong key pressed
+    if(playerPressed === expectedAlphabet){
+        console.log('you got a point!');
+        console.log('you have pressed correctly', expectedAlphabet);
+        removeBacgroundColorById(expectedAlphabet);
+        continueGame();
+    }
+    else {
+        console.log('dhur vaia ba apu ...right key press koro')
+    }
+}
+// capture keyboard key press
+document.addEventListener('keyup', handlekeyboardkeyUpEvent);
 
 function continueGame(){
     //step 1;
     const alphabet = getARandomAlphabet();
-    console.log('your random alphabet', alphabet);
+    //console.log('your random alphabet', alphabet);
 
-    // set random Alphabet 
+    // set random generated Alphabet 
     const currentAlphabetElement = document.getElementById('current-alphabet');
-    currentAlphabetElement.innerText = alphabet; 
+    currentAlphabetElement.innerText = alphabet;
+    
+    //set background color
+    setBackgroundColorById(alphabet);
 
 }
 

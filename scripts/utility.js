@@ -8,6 +8,17 @@
     element.classList.remove('hidden');
  }
 
+ function setBackgroundColorById(elementId){
+    const element = document.getElementById(elementId);
+     element.classList.add('bg-orange-400');
+ }
+  function removeBacgroundColorById(elementId){
+      const element = document.getElementById(elementId);
+       element.classList.remove('bg-orange-400');
+   }
+
+
+
 function getARandomAlphabet() {
     //getn or create an alphabet array
     const alpabetString = 'abcdefghijklmnopqrstuvwxyz';
@@ -20,7 +31,7 @@ function getARandomAlphabet() {
     //console.log(index);
 
     const alphabet = alphabets[index];
-    console.log(index, alphabet);
+   // console.log(index, alphabet);
     return alphabet;
 
 }
